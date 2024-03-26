@@ -73,4 +73,75 @@ INNER JOIN dbo.category ON dbo.category.id=dbo.[transaction].category_id
 ORDER BY FrequentCustomers.customer_id
 ```
 
+# Breakdown of sales by category
+# Total Sales in each category -> treemap
+```RUBY
+SELECT category, item_name,
+    sum(price * quantity) as revenue
+FROM dbo.[transaction]
+INNER JOIN dbo.[item] 
+    ON dbo.[transaction].item_id=dbo.[item].id
+INNER JOIN dbo.[category]
+    ON dbo.[category].id=dbo.[transaction].category_id
+GROUP BY dbo.[category].category, item_name
+ORDER BY category desc
+```
+# Quantites over months
+```RUBY
+SELECT category,
+    [1] AS Jan,
+    [2] AS Feb,
+    [3] AS Mar,
+    [4] AS Apr,
+    [5] AS May
+FROM (
+SELECT category, 
+    DATEPART(MONTH,timestamp) as month,
+    sum(quantity) as Quantity
+FROM dbo.[transaction]
+LEFT JOIN dbo.[category]
+ON dbo.[transaction].category_id=dbo.[category].id 
+GROUP BY category, DATEPART(MONTH,timestamp)) as source
+PIVOT (
+    Sum(Quantity)
+    FOR month
+    IN ([1], [2], [3], [4], [5], [6])
+) AS PivotMonth
+
+UNION
+
+SELECT 'Total',
+    [1] AS Jan,
+    [2] AS Feb,
+    [3] AS Mar,
+    [4] AS Apr,
+    [5] AS May
+FROM (
+SELECT 
+    DATEPART(MONTH,timestamp) as month,
+    sum(quantity) as Quantity
+FROM dbo.[transaction]
+LEFT JOIN dbo.[category]
+ON dbo.[transaction].category_id=dbo.[category].id 
+GROUP BY DATEPART(MONTH,timestamp)) as source
+PIVOT (
+    Sum(Quantity)
+    FOR month
+    IN ([1], [2], [3], [4], [5], [6])
+) AS PivotMonth
+```
+
+# Sales Contribution by Categories
+Create Spendings column
+```RUbY
+ALTER TABLE dbo.[transaction]
+ADD spendings int
+
+UPDATE dbo.[transaction]
+SET spendings = quantity * dbo.item.price
+FROM dbo.[transaction]
+INNER JOIN dbo.item
+ON dbo.[transaction].item_id=dbo.item.id
+```
+
 
