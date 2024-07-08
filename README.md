@@ -143,5 +143,76 @@ FROM dbo.[transaction]
 INNER JOIN dbo.item
 ON dbo.[transaction].item_id=dbo.item.id
 ```
+# % of Grand Total in each Category
+```RUbY
+WITH cate as (
+        SELECT 
+        dbo.category.category as category,
+        sum(dbo.[transaction].spendings) as Cate_GMV
+        FROM dbo.[transaction]
+        left join dbo.category
+        on dbo.[transaction].category_id=dbo.category.id
+        group by dbo.category.category
+),
+
+GMV_Total as (
+        select
+        sum(cast(dbo.[transaction].spendings as bigint)) as Total_GMV FROM dbo.[transaction]
+)
+
+SELECT
+    cate.category,
+    -- cate.Cate_GMV,
+    -- GMV_Total.Total_GMV,
+    round(cast(Cate.Cate_GMV as float)*100/cast(GMV_Total.Total_GMV as float),2) as '%'
+FROM Cate 
+CROSS JOIN GMV_Total
+```
+
+# % of Grand Total in each Category through months
+```RUbY
+WITH cate as (
+        SELECT 
+        month(dbo.[transaction].[timestamp]) as month,
+        dbo.category.category as category,
+        sum(dbo.[transaction].spendings) as Cate_GMV
+        FROM dbo.[transaction]
+        left join dbo.category
+        on dbo.[transaction].category_id=dbo.category.id
+        group by month(dbo.[transaction].[timestamp]), dbo.category.category
+)
+SELECT
+    category,
+    cast([1] as decimal(10,2)) as Jan,
+    cast([2] as decimal(10,2)) as Feb,
+    cast([3] as decimal(10,2)) as Mar,
+    cast([4] as decimal(10,2)) as Apr,
+    cast([5] as decimal(10,2)) as May,
+    cast([6] as decimal(10,2)) as Jun
+From (
+    Select
+    category,
+    [1], [2], [3], [4], [5], [6]
+    FROM (
+        SELECT
+            category,
+            month,
+            ROUND(SUM(cate_gmv) * 100.0 / total_gmv_per_month, 2) AS contribution
+        FROM (
+            SELECT
+                category,
+                month,
+                cate_gmv,
+                SUM(cate_gmv) OVER (PARTITION BY month) AS total_gmv_per_month
+            FROM cate
+        ) AS agg
+        GROUP BY category, month, total_gmv_per_month
+    ) AS source
+    PIVOT (
+        sum(contribution)
+        FOR month IN ([1], [2], [3], [4], [5], [6])
+    ) AS pivottable
+) AS casted_results;
+```
 
 
