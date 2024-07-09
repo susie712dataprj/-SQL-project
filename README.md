@@ -1,5 +1,5 @@
 ## ECOMMERCE PERFORMANCE
-# Email:
-# Linkedin:
+Email:
+Linkedin:
 
 ## Introduction
