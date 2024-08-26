@@ -1,6 +1,6 @@
 ## ECOMMERCE PERFORMANCE
-Email:
-Linkedin:
+Email: susie.minhthuy@gmail.com
+Linkedin: https://www.linkedin.com/in/minhthuywork/
 
 ## Introduction
 My first practice with SQL to perform Exploratory Data Analysis (EDA) of a "small" Ecommerce dataset aimed at analyzing customer behavior, sales trends, and product performance. During this process, I focused on extracting key metrics such as total sales, average order value, and customer lifetime value. I also segmented the data to understand which product categories were most popular and which time periods saw the highest traffic. Through the use of various SQL queries, I was able to identify patterns and insights that could inform strategic decisions for optimizing marketing efforts and inventory management.
@@ -9,6 +9,9 @@ My first practice with SQL to perform Exploratory Data Analysis (EDA) of a "smal
 * The dataset contains with four csv file about: __transaction, category, item, status_
 Entity Relation Diagram (ERD)
 Variables
+
+## Analysis
+MSSQL script: https://github.com/susie712dataprj/-SQL-project/blob/main/eda.sql
 
 ## Key Insight
 * Beauty take the bulk of the company’s total sold quantity, which is 610 items. Following is Tech Gadgets with 277 items, and Home Appliances with 103 items.
@@ -22,6 +25,13 @@ Variables
 * Mondays and Tuesdays have the lowest overall order volume across all time slots, from Wednesdays to Fridays show a slight increase in orders, but still significantly lower than weekends.
 
 ## Visualization
-Excel is utilized for quick and comprehensive report: https://github.com/susie712dataprj/-SQL-project/blob/main/Ecommerce%20Performance.xlsm
+Excel is utilized for quick and comprehensive report: (download) https://github.com/susie712dataprj/-SQL-project/blob/main/Ecommerce%20Performance.xlsm
+![Picture1](https://github.com/user-attachments/assets/6fd6c70b-a254-4b41-b134-82429a1ccdb6)
+![Bản sao fg](https://github.com/user-attachments/assets/1726bb4b-e8e9-49cd-b2e7-ce942796e535)
+![đư](https://github.com/user-attachments/assets/f17c154a-738b-4b95-bf70-4cef604a6b31)
+<img width="1139" alt="Ảnh màn hình 2024-08-26 lúc 20 54 11" src="https://github.com/user-attachments/assets/883a4747-fbf6-4d5d-9d9c-7a312f8770e9">
+
+
+
 
 
