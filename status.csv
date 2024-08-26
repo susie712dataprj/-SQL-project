@@ -1,0 +1,5 @@
+﻿id,status_name
+1,NEW
+2,PROCESSING
+3,DELIVERED
+4,RETURNED
