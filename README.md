@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/15148f9c-6b9a-425a-970d-df33eb0a9359)# ECOMMERCE PERFORMANCE
+## ECOMMERCE PERFORMANCE
 Email:
 Linkedin:
 
