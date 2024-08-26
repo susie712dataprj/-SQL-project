@@ -42,6 +42,16 @@ FROM dbo.[transaction]
 GROUP BY datename(dw, timestamp)
 ORDER BY number_of_orders DESC;
 
+-- Most ordered item
+SELECT Top 1
+    item_name,
+    sum(quantity) as total_order
+FROM dbo.[item]
+    INNER JOIN dbo.[transaction]
+    ON dbo.[item].id=dbo.[transaction].item_id
+GROUP BY item_name, quantity
+order by total_order desc;
+
 -- Highest spendings customer
 DROP VIEW IF EXISTS Spendings;
 
