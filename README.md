@@ -22,5 +22,6 @@ Variables
 * Mondays and Tuesdays have the lowest overall order volume across all time slots, from Wednesdays to Fridays show a slight increase in orders, but still significantly lower than weekends.
 
 ## Visualization
+Excel is utilized for quick and comprehensive report: https://github.com/susie712dataprj/-SQL-project/blob/main/Ecommerce%20Performance.xlsm
 
 
