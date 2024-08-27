@@ -7,7 +7,7 @@ My first practice with SQL to perform Exploratory Data Analysis (EDA) of a "smal
 
 ## Overview
 * The dataset contains with four csv file about: _transaction, category, item, status_
-* Entity Relation Diagram (ERD)
+* Entity Relation Diagram (ERD) - built by Data Model in Excel
 ![image](https://github.com/user-attachments/assets/afa171d1-5bb6-4a8b-9ec6-07b33f3116e4)
 
 ## Analysis
