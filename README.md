@@ -6,9 +6,9 @@ Linkedin: https://www.linkedin.com/in/minhthuywork/
 My first practice with SQL to perform Exploratory Data Analysis (EDA) of a "small" Ecommerce dataset aimed at analyzing customer behavior, sales trends, and product performance. During this process, I focused on extracting key metrics such as total sales, average order value, and customer lifetime value. I also segmented the data to understand which product categories were most popular and which time periods saw the highest traffic. Through the use of various SQL queries, I was able to identify patterns and insights that could inform strategic decisions for optimizing marketing efforts and inventory management.
 
 ## Overview
-* The dataset contains with four csv file about: __transaction, category, item, status_
-Entity Relation Diagram (ERD)
-Variables
+* The dataset contains with four csv file about: _transaction, category, item, status_
+* Entity Relation Diagram (ERD)
+![image](https://github.com/user-attachments/assets/afa171d1-5bb6-4a8b-9ec6-07b33f3116e4)
 
 ## Analysis
 MSSQL script: https://github.com/susie712dataprj/-SQL-project/blob/main/eda.sql
